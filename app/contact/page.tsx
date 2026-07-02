@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import TrackablePhoneLink from "@/components/TrackablePhoneLink";
 import { getWhatsAppUrl } from "@/lib/contact";
 import { handleWhatsAppConversion } from "@/lib/analytics";
 import { siteConfig } from "@/lib/data";
@@ -75,12 +76,16 @@ export default function ContactPage() {
                         {item.label}
                       </p>
                       {item.href ? (
-                        <a
-                          href={item.href}
-                          className="mt-0.5 block text-charcoal-800 transition-colors hover:text-charcoal-900"
-                        >
-                          {item.value}
-                        </a>
+                        item.label === "Telefon" ? (
+                          <TrackablePhoneLink className="mt-0.5 block text-charcoal-800 transition-colors hover:text-charcoal-900" />
+                        ) : (
+                          <a
+                            href={item.href}
+                            className="mt-0.5 block text-charcoal-800 transition-colors hover:text-charcoal-900"
+                          >
+                            {item.value}
+                          </a>
+                        )
                       ) : (
                         <p className="mt-0.5 text-charcoal-800">{item.value}</p>
                       )}

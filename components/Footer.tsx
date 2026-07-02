@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Logo from "@/components/Logo";
+import TrackablePhoneLink from "@/components/TrackablePhoneLink";
 import { navLinks, siteConfig } from "@/lib/data";
 
 export default function Footer() {
@@ -61,12 +62,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <Phone size={15} className="mt-0.5 shrink-0 text-charcoal-500" />
-                <a
-                  href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-                  className="transition-colors duration-300 hover:text-charcoal-900"
-                >
-                  {siteConfig.phone}
-                </a>
+                <TrackablePhoneLink className="transition-colors duration-300 hover:text-charcoal-900" />
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-charcoal-500" />

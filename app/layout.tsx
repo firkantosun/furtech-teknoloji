@@ -98,7 +98,22 @@ export default function RootLayout({
               });
               return false;
             }
+            function gtag_report_conversion_call(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': 'AW-18293811691/iJ7UCLzExckcEOvTlZNE',
+                'value': 1.0,
+                'currency': 'TRY',
+                'event_callback': callback
+              });
+              return false;
+            }
             window.gtag_report_conversion = gtag_report_conversion;
+            window.gtag_report_conversion_call = gtag_report_conversion_call;
           `}
         </Script>
       </head>

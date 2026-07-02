@@ -1,6 +1,7 @@
 import type { MouseEvent } from "react";
 
-export const GOOGLE_ADS_CONVERSION = "AW-18293811691/ps9GCMefvskcEOvTlZNE";
+export const GOOGLE_ADS_FORM_CONVERSION = "AW-18293811691/ps9GCMefvskcEOvTlZNE";
+export const GOOGLE_ADS_PHONE_CONVERSION = "AW-18293811691/iJ7UCLzExckcEOvTlZNE";
 
 type Gtag = (...args: unknown[]) => void;
 
@@ -13,7 +14,11 @@ function navigateAfterConversion(url: string, openInNewTab = false) {
   window.location.href = url;
 }
 
-export function reportGoogleConversion(url?: string, openInNewTab = false) {
+function reportConversion(
+  sendTo: string,
+  url?: string,
+  openInNewTab = false
+) {
   if (typeof window === "undefined") {
     return false;
   }
@@ -28,7 +33,7 @@ export function reportGoogleConversion(url?: string, openInNewTab = false) {
   }
 
   gtag("event", "conversion", {
-    send_to: GOOGLE_ADS_CONVERSION,
+    send_to: sendTo,
     value: 1.0,
     currency: "TRY",
     event_callback: url
@@ -41,18 +46,37 @@ export function reportGoogleConversion(url?: string, openInNewTab = false) {
   return false;
 }
 
+/** Potansiyel müşteri formu gönderimi */
+export function reportFormConversion() {
+  return reportConversion(GOOGLE_ADS_FORM_CONVERSION);
+}
+
+/** Tıkla ve ara */
+export function reportPhoneCallConversion(url: string) {
+  return reportConversion(GOOGLE_ADS_PHONE_CONVERSION, url);
+}
+
 export function handleWhatsAppConversion(
   event: MouseEvent<HTMLAnchorElement>,
   url: string
 ) {
   event.preventDefault();
-  reportGoogleConversion(url, true);
+  reportConversion(GOOGLE_ADS_FORM_CONVERSION, url, true);
+}
+
+export function handlePhoneCallConversion(
+  event: MouseEvent<HTMLAnchorElement>,
+  telUrl: string
+) {
+  event.preventDefault();
+  reportPhoneCallConversion(telUrl);
 }
 
 declare global {
   interface Window {
     gtag?: Gtag;
     gtag_report_conversion?: (url?: string) => boolean;
+    gtag_report_conversion_call?: (url?: string) => boolean;
     dataLayer?: unknown[];
   }
 }

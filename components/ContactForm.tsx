@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Send, CheckCircle, Loader2 } from "lucide-react";
 import { siteConfig } from "@/lib/data";
 import { serviceLabels } from "@/lib/contact";
-import { reportGoogleConversion } from "@/lib/analytics";
+import { reportFormConversion } from "@/lib/analytics";
 
 type FormSubmitResponse = {
   success?: boolean | string;
@@ -69,7 +69,7 @@ export default function ContactForm() {
 
       setStatus("success");
       form.reset();
-      reportGoogleConversion();
+      reportFormConversion();
       setFeedbackMessage(
         `Talebiniz ${siteConfig.contactFormEmail} adresine iletildi. En kısa sürede size dönüş yapacağız.`
       );
