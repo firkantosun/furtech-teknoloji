@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <rect width="1600" height="1000" fill="#fbf5e1"/>
+  <defs>
+    <linearGradient id="water" x1="0" y1="500" x2="1600" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#b8d4e8" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#7eb8d4" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <rect y="520" width="1600" height="480" fill="url(#water)"/>
+  <circle cx="400" cy="300" r="180" fill="#d4c4a8" opacity="0.12"/>
+  <rect x="280" y="200" width="1040" height="480" rx="20" fill="#ffffff" stroke="#e7e0d5" stroke-width="2"/>
+  <rect x="280" y="200" width="1040" height="56" rx="20" fill="#f5f0e8"/>
+  <rect x="280" y="232" width="1040" height="24" fill="#f5f0e8"/>
+  <text x="800" y="238" text-anchor="middle" font-family="system-ui,sans-serif" font-size="16" font-weight="600" fill="#44403c">BODRUM AQUAPARK  MERKEZ0 Y�NET0M</text>
+  <rect x="320" y="280" width="200" height="120" rx="12" fill="#f5f0e8" stroke="#e7e0d5"/>
+  <text x="420" y="330" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#78716c">Turnike</text>
+  <text x="420" y="365" text-anchor="middle" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="#1c1917">24</text>
+  <rect x="560" y="280" width="200" height="120" rx="12" fill="#f5f0e8" stroke="#e7e0d5"/>
+  <text x="660" y="330" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#78716c">POS</text>
+  <text x="660" y="365" text-anchor="middle" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="#1c1917">8</text>
+  <rect x="800" y="280" width="200" height="120" rx="12" fill="#f5f0e8" stroke="#e7e0d5"/>
+  <text x="900" y="330" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#78716c">Kart</text>
+  <text x="900" y="365" text-anchor="middle" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="#1c1917">2.4K</text>
+  <rect x="1040" y="280" width="240" height="120" rx="12" fill="#1c1917"/>
+  <text x="1160" y="330" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#d4c4a8">Uptime</text>
+  <text x="1160" y="365" text-anchor="middle" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="#ffffff">%99.9</text>
+  <rect x="320" y="430" width="960" height="200" rx="12" fill="#faf8f4" stroke="#e7e0d5"/>
+  <polyline points="360,580 440,520 520,540 600,460 680,480 760,400 840,420 920,360 1000,380 1080,320 1160,340 1240,300" stroke="#b8a484" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="320" y="660" width="280" height="8" rx="4" fill="#e7e0d5"/>
+  <rect x="320" y="660" width="200" height="8" rx="4" fill="#b8a484"/>
+  <text x="800" y="920" text-anchor="middle" font-family="system-ui,sans-serif" font-size="28" font-weight="600" fill="#44403c" letter-spacing="0.06em">AQUAPARK D0J0TAL ALTYAPI</text>
+  <text x="800" y="960" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" fill="#78716c">Server � Turnike � POS � 0K Paneli</text>
+</svg>

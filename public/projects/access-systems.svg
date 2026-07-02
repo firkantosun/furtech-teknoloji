@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <rect width="1600" height="1000" fill="#fbf5e1"/>
+  <circle cx="1200" cy="200" r="220" fill="#d4c4a8" opacity="0.12"/>
+  <circle cx="250" cy="750" r="280" fill="#b8a484" opacity="0.1"/>
+  <rect x="520" y="180" width="560" height="520" rx="16" fill="#ffffff" stroke="#e7e0d5" stroke-width="2"/>
+  <rect x="680" y="120" width="240" height="80" rx="8" fill="#1c1917"/>
+  <rect x="700" y="140" width="200" height="40" rx="4" fill="#44403c"/>
+  <rect x="560" y="240" width="80" height="400" rx="4" fill="#d6cec0"/>
+  <rect x="640" y="240" width="8" height="400" fill="#b8a484"/>
+  <rect x="648" y="280" width="120" height="8" fill="#1c1917" opacity="0.3"/>
+  <rect x="648" y="320" width="120" height="8" fill="#1c1917" opacity="0.3"/>
+  <rect x="648" y="360" width="120" height="8" fill="#1c1917" opacity="0.3"/>
+  <rect x="960" y="240" width="80" height="400" rx="4" fill="#d6cec0"/>
+  <rect x="880" y="240" width="8" height="400" fill="#b8a484"/>
+  <rect x="760" y="400" width="80" height="120" rx="40" fill="#f5f0e8" stroke="#b8a484" stroke-width="3"/>
+  <circle cx="800" cy="460" r="24" fill="#b8a484" opacity="0.3"/>
+  <rect x="380" y="420" width="120" height="76" rx="12" fill="#1c1917"/>
+  <rect x="396" y="436" width="88" height="12" rx="4" fill="#b8a484"/>
+  <rect x="396" y="456" width="60" height="8" rx="2" fill="#44403c"/>
+  <rect x="396" y="472" width="88" height="8" rx="2" fill="#44403c"/>
+  <circle cx="1100" cy="460" r="48" fill="#ffffff" stroke="#e7e0d5" stroke-width="2"/>
+  <circle cx="1100" cy="460" r="32" fill="none" stroke="#b8a484" stroke-width="3"/>
+  <path d="M1084 460 L1096 472 L1116 448" stroke="#1c1917" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="800" y="920" text-anchor="middle" font-family="system-ui,sans-serif" font-size="28" font-weight="600" fill="#44403c" letter-spacing="0.08em">GE�0^ S0STEMLER0</text>
+  <text x="800" y="960" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" fill="#78716c">Turnike � RFID � Kartl1 Ge�i_</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <rect width="1600" height="1000" fill="#fbf5e1"/>
+  <defs>
+    <linearGradient id="bg2" x1="800" y1="0" x2="800" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ede6da" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#fbf5e1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg2)"/>
+  <circle cx="300" cy="700" r="250" fill="#b8a484" opacity="0.1"/>
+  <circle cx="1300" cy="250" r="200" fill="#d4c4a8" opacity="0.15"/>
+  <rect x="620" y="120" width="360" height="720" rx="48" fill="#1c1917"/>
+  <rect x="636" y="180" width="328" height="600" rx="32" fill="#ffffff"/>
+  <rect x="736" y="148" width="128" height="28" rx="14" fill="#1c1917"/>
+  <rect x="656" y="220" width="288" height="32" rx="8" fill="#1c1917" opacity="0.85"/>
+  <rect x="656" y="268" width="200" height="12" rx="4" fill="#a8a29e" opacity="0.4"/>
+  <rect x="656" y="320" width="288" height="120" rx="16" fill="#f5f0e8" stroke="#e7e0d5"/>
+  <rect x="656" y="460" width="136" height="100" rx="12" fill="#f5f0e8" stroke="#e7e0d5"/>
+  <rect x="808" y="460" width="136" height="100" rx="12" fill="#f5f0e8" stroke="#e7e0d5"/>
+  <rect x="656" y="580" width="288" height="56" rx="28" fill="#1c1917"/>
+  <rect x="480" y="340" width="120" height="120" rx="24" fill="#ffffff" stroke="#e7e0d5" stroke-width="2"/>
+  <text x="540" y="395" text-anchor="middle" font-family="system-ui,sans-serif" font-size="36" fill="#b8a484">iOS</text>
+  <rect x="1000" y="340" width="120" height="120" rx="24" fill="#ffffff" stroke="#e7e0d5" stroke-width="2"/>
+  <text x="1060" y="395" text-anchor="middle" font-family="system-ui,sans-serif" font-size="36" fill="#b8a484">A</text>
+  <text x="800" y="920" text-anchor="middle" font-family="system-ui,sans-serif" font-size="28" font-weight="600" fill="#44403c" letter-spacing="0.08em">MOB0L UYGULAMA</text>
+  <text x="800" y="960" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" fill="#78716c">React Native � iOS � Android</text>
+</svg>
