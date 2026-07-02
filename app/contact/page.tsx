@@ -5,6 +5,7 @@ import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import { getWhatsAppUrl } from "@/lib/contact";
+import { handleWhatsAppConversion } from "@/lib/analytics";
 import { siteConfig } from "@/lib/data";
 import { fadeInUp } from "@/lib/motion";
 
@@ -92,6 +93,7 @@ export default function ContactPage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(event) => handleWhatsAppConversion(event, whatsappUrl)}
                 className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-4 text-sm font-semibold text-white transition-transform hover:scale-[1.02] sm:w-auto"
               >
                 WhatsApp ile Yazın

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/data";
+import { handleWhatsAppConversion } from "@/lib/analytics";
 
 export default function WhatsAppButton() {
   const message = encodeURIComponent(
@@ -15,6 +16,7 @@ export default function WhatsAppButton() {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={(event) => handleWhatsAppConversion(event, url)}
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 transition-transform hover:scale-105"
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}

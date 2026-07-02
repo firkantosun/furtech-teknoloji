@@ -82,6 +82,25 @@ export default function RootLayout({
             gtag('config', '${GOOGLE_ADS_ID}');
           `}
         </Script>
+        <Script id="google-ads-conversion" strategy="afterInteractive">
+          {`
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                'send_to': 'AW-18293811691/ps9GCMefvskcEOvTlZNE',
+                'value': 1.0,
+                'currency': 'TRY',
+                'event_callback': callback
+              });
+              return false;
+            }
+            window.gtag_report_conversion = gtag_report_conversion;
+          `}
+        </Script>
       </head>
       <body className="min-h-screen font-sans">
         <div className="noise-overlay fixed inset-0 z-[100] pointer-events-none" aria-hidden="true" />

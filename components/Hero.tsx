@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/data";
 import { getWhatsAppUrl } from "@/lib/contact";
+import { handleWhatsAppConversion } from "@/lib/analytics";
 import { heroStagger, fadeInBlur } from "@/lib/motion";
 
 const techStack = ["React Native", "Next.js", "Python", "Azure", "AI/ML"];
@@ -77,6 +78,7 @@ export default function Hero() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(event) => handleWhatsAppConversion(event, whatsappUrl)}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] sm:w-auto"
               >
                 <MessageCircle size={17} />

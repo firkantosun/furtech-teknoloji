@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { getWhatsAppUrl } from "@/lib/contact";
+import { handleWhatsAppConversion } from "@/lib/analytics";
 import { fadeInBlur } from "@/lib/motion";
 
 export default function CTASection() {
@@ -44,6 +45,7 @@ export default function CTASection() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(event) => handleWhatsAppConversion(event, whatsappUrl)}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] sm:w-auto"
               >
                 <MessageCircle size={17} />
