@@ -1,17 +1,12 @@
-import { siteConfig } from "@/lib/data";
+import { siteConfig, services } from "@/lib/data";
 
 export function getWhatsAppUrl(
-  message = "Merhaba, projem hakkında bilgi almak istiyorum."
+  message = "Merhaba Furtech Teknoloji, projem hakkında bilgi almak istiyorum."
 ) {
   return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
 export const serviceLabels: Record<string, string> = {
-  web: "Web Sitesi Geliştirme",
-  mobile: "Mobil Uygulama",
-  access: "Turnike & Kartlı Geçiş",
-  panel: "Yönetim Paneli",
-  aquapark: "Dijital Sistem Kurulumu",
-  ai: "Yapay Zeka Çözümleri",
-  custom: "Özel Yazılım",
+  ...Object.fromEntries(services.map((s) => [s.id, s.title])),
+  custom: "Diğer / emin değilim",
 };

@@ -1,47 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  /* Dark navy surfaces */
-  --color-cream-50: #060b14;
-  --color-cream-100: #0a1120;
-  --color-cream-200: #111b2e;
-  --color-cream-300: #1a2740;
+  /* Brand surfaces: the cream of the Furtech logo */
+  --color-paper: #fcf5e2;
+  --color-paper-deep: #f4e9cc;
+  --color-ink: #000000;
+  --color-ink-soft: #3b372d;
+  --color-ink-muted: #6b6455;
+  --color-line: #e2d5b3;
 
-  /* Cards & elevated panels */
-  --color-white: #131f35;
+  /* Signal colours: cobalt = connection, green = live/ok, red = before/broken */
+  --color-cobalt: #2d3bff;
+  --color-cobalt-deep: #1d27c4;
+  --color-signal: #00995e;
+  --color-alert: #d7372c;
 
-  /* Light text on dark */
-  --color-charcoal-900: #f1f5f9;
-  --color-charcoal-800: #e2e8f0;
-  --color-charcoal-700: #cbd5e1;
-  --color-charcoal-600: #94a3b8;
-  --color-charcoal-500: #64748b;
-  --color-charcoal-400: #475569;
+  --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, Menlo, monospace;
 
-  /* Borders */
-  --color-stone-200: #1e3a5f;
-  --color-stone-300: #2d4a6f;
-
-  /* Blue accents */
-  --color-beige-300: #93c5fd;
-  --color-beige-400: #60a5fa;
-  --color-beige-500: #3b82f6;
-  --color-accent: #3b82f6;
-  --color-accent-dark: #2563eb;
-
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, monospace;
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-@utility font-display {
-  font-family: var(--font-display);
+@utility font-wide {
+  font-stretch: 125%;
 }
 
-@utility font-mono {
-  font-family: var(--font-mono);
+@utility font-semiwide {
+  font-stretch: 112%;
 }
 
 @layer base {
@@ -50,167 +35,82 @@
   }
 
   body {
-    @apply bg-cream-100 text-charcoal-700 antialiased;
+    @apply bg-paper text-ink-soft antialiased;
     font-family: var(--font-sans);
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply text-ink;
+    font-stretch: 118%;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {
-    @apply bg-beige-500/30 text-charcoal-900;
+    @apply bg-cobalt text-paper;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cobalt);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 }
 
-@layer utilities {
-  .glass {
-    @apply border border-stone-200/80 bg-white/60 backdrop-blur-xl;
-    box-shadow:
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.06),
-      0 4px 24px -4px rgba(0, 0, 0, 0.4);
-  }
-
-  .glass-strong {
-    @apply border border-stone-200 bg-white/80 backdrop-blur-2xl;
-    box-shadow:
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
-      0 8px 32px -8px rgba(0, 0, 0, 0.45);
-  }
-
-  .glass-card {
-    @apply border border-stone-200/90 bg-white;
-    box-shadow:
-      0 1px 2px rgba(0, 0, 0, 0.2),
-      0 8px 24px -8px rgba(0, 0, 0, 0.35);
-  }
-
-  .glass-shine {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .glass-shine::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      105deg,
-      transparent 40%,
-      rgba(96, 165, 250, 0.12) 50%,
-      transparent 60%
-    );
-    pointer-events: none;
-  }
-
-  .text-gradient {
-    @apply bg-gradient-to-r from-charcoal-900 via-beige-300 to-beige-400 bg-clip-text text-transparent;
-  }
-
-  .text-gradient-shimmer {
-    background: linear-gradient(
-      90deg,
-      #f1f5f9 0%,
-      #93c5fd 25%,
-      #60a5fa 50%,
-      #93c5fd 75%,
-      #f1f5f9 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 8s linear infinite;
-  }
-
-  .glow-beige {
-    box-shadow: 0 8px 32px -8px rgba(59, 130, 246, 0.35);
-  }
-
-  .grid-pattern {
-    background-image:
-      linear-gradient(rgba(96, 165, 250, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
-    background-size: 72px 72px;
-  }
-
-  .dot-pattern {
-    background-image: radial-gradient(rgba(96, 165, 250, 0.12) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  .mesh-gradient {
-    background:
-      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(37, 99, 235, 0.22), transparent),
-      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(15, 23, 42, 0.9), transparent),
-      radial-gradient(ellipse 50% 60% at 60% 80%, rgba(59, 130, 246, 0.12), transparent);
-  }
-
-  .section-padding {
-    @apply py-24 md:py-32 lg:py-36;
-  }
-
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-accent bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300;
-    box-shadow: 0 4px 20px -4px rgba(59, 130, 246, 0.5);
-  }
-
-  .btn-primary:hover {
-    @apply border-beige-400 bg-beige-400;
-    transform: translateY(-1px);
-    box-shadow: 0 8px 28px -4px rgba(59, 130, 246, 0.55);
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-stone-300 bg-cream-200 px-7 py-3.5 text-sm font-semibold text-charcoal-800 transition-all duration-300;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  }
-
-  .btn-secondary:hover {
-    @apply border-beige-500/40 bg-cream-300 text-charcoal-900;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 20px -4px rgba(59, 130, 246, 0.2);
-  }
-
-  .logo-surface {
-    @apply rounded-xl bg-[#fbf5e1] px-2 py-1;
-  }
-
-  .noise-overlay {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    opacity: 0.04;
-    pointer-events: none;
-  }
-
-  .project-image-ratio {
-    aspect-ratio: 16 / 10;
-  }
+@utility shell {
+  @apply mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-10;
 }
 
-@keyframes shimmer {
-  0% { background-position: 200% center; }
-  100% { background-position: -200% center; }
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[0.95rem] font-semibold transition-[background-color,color,transform] duration-200 active:translate-y-px;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
+@utility btn-ink {
+  @apply btn bg-ink text-paper hover:bg-cobalt;
 }
 
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+@utility btn-line {
+  @apply btn border-[1.5px] border-ink text-ink hover:bg-ink hover:text-paper;
 }
 
-.animate-float-slow {
-  animation: float-slow 8s var(--ease-out-quart) infinite;
+@utility btn-whatsapp {
+  @apply btn bg-[#1faa53] text-white hover:bg-[#168a42];
+}
+
+/* Faint engineering grid used behind schematic areas */
+@utility schematic-grid {
+  background-image:
+    linear-gradient(var(--color-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+}
+
+@utility field {
+  @apply w-full rounded-lg border-[1.5px] border-line bg-paper px-4 py-3 text-[0.95rem] text-ink outline-none transition-colors placeholder:text-ink-muted/70 focus:border-cobalt;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.caret {
+  animation: blink 1s steps(1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-float-slow,
-  .text-gradient-shimmer {
-    animation: none;
+  html {
+    scroll-behavior: auto;
   }
-
-  .btn-primary:hover,
-  .btn-secondary:hover {
-    transform: none;
+  .caret {
+    animation: none;
   }
 }

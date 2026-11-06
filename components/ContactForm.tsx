@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { motion } from "framer-motion";
 import { Send, CheckCircle, Loader2 } from "lucide-react";
-import { siteConfig } from "@/lib/data";
+import { services, siteConfig } from "@/lib/data";
 import { serviceLabels } from "@/lib/contact";
 import { reportFormConversion } from "@/lib/analytics";
 
@@ -83,14 +82,13 @@ export default function ContactForm() {
     }
   }
 
-  const inputClass =
-    "w-full rounded-xl border border-stone-200 bg-cream-200 px-4 py-3.5 text-sm text-charcoal-900 placeholder:text-charcoal-500 outline-none transition-all focus:border-beige-500 focus:ring-2 focus:ring-beige-500/20";
+  const inputClass = "field";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-2 block text-xs font-medium uppercase tracking-wider text-charcoal-500">
+          <label htmlFor="name" className="mb-1.5 block text-[0.92rem] font-semibold text-ink">
             Ad Soyad *
           </label>
           <input
@@ -103,7 +101,7 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="email" className="mb-2 block text-xs font-medium uppercase tracking-wider text-charcoal-500">
+          <label htmlFor="email" className="mb-1.5 block text-[0.92rem] font-semibold text-ink">
             E-posta *
           </label>
           <input
@@ -119,7 +117,7 @@ export default function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="phone" className="mb-2 block text-xs font-medium uppercase tracking-wider text-charcoal-500">
+          <label htmlFor="phone" className="mb-1.5 block text-[0.92rem] font-semibold text-ink">
             Telefon
           </label>
           <input
@@ -131,24 +129,21 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="service" className="mb-2 block text-xs font-medium uppercase tracking-wider text-charcoal-500">
+          <label htmlFor="service" className="mb-1.5 block text-[0.92rem] font-semibold text-ink">
             Hizmet
           </label>
           <select id="service" name="service" className={inputClass + " cursor-pointer"}>
-            <option value="">Seçiniz</option>
-            <option value="web">Web Sitesi Geliştirme</option>
-            <option value="mobile">Mobil Uygulama</option>
-            <option value="access">Turnike & Kartlı Geçiş</option>
-            <option value="panel">Yönetim Paneli</option>
-            <option value="aquapark">Dijital Sistem Kurulumu</option>
-            <option value="ai">Yapay Zeka Çözümleri</option>
-            <option value="custom">Özel Yazılım</option>
+            <option value="">Seçin</option>
+            {services.map((sv) => (
+              <option key={sv.id} value={sv.id}>{sv.title}</option>
+            ))}
+            <option value="custom">Diğer / emin değilim</option>
           </select>
         </div>
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-xs font-medium uppercase tracking-wider text-charcoal-500">
+        <label htmlFor="message" className="mb-1.5 block text-[0.92rem] font-semibold text-ink">
           Mesajınız *
         </label>
         <textarea
@@ -156,35 +151,34 @@ export default function ContactForm() {
           name="message"
           required
           rows={5}
-          placeholder="Projeniz hakkında kısaca bilgi verin..."
+          placeholder="İşletmeniz ve çözmek istediğiniz sorun hakkında kısaca yazın"
           className={inputClass + " resize-none"}
         />
       </div>
 
-      <motion.button
+      <button
         type="submit"
         disabled={status === "loading" || status === "success"}
-        whileHover={{ scale: status === "idle" ? 1.01 : 1 }}
-        whileTap={{ scale: status === "idle" ? 0.99 : 1 }}
-        className="btn-primary flex w-full disabled:cursor-not-allowed disabled:opacity-70"
+        className="btn-ink flex w-full disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === "loading" && <Loader2 size={18} className="animate-spin" />}
         {status === "success" && <CheckCircle size={18} />}
         {status === "loading" && "Gönderiliyor..."}
-        {status === "success" && "Mesajınız gönderildi!"}
+        {status === "success" && "Talebiniz gönderildi"}
         {status === "idle" && (
           <>
-            Teklif Alın
-            <Send size={16} />
+            Talebi gönder
+            <Send size={16} aria-hidden="true" />
           </>
         )}
-        {status === "error" && "Tekrar deneyin"}
-      </motion.button>
+        {status === "error" && "Tekrar gönder"}
+      </button>
 
       {feedbackMessage && (
         <p
+          role="status"
           className={`text-center text-sm ${
-            status === "success" ? "text-charcoal-600" : "text-amber-300"
+            status === "success" ? "text-signal" : "text-alert"
           }`}
         >
           {feedbackMessage}

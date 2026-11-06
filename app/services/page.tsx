@@ -1,70 +1,82 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
+import CTA from "@/components/CTA";
+import { PageHeader } from "@/components/Sections";
+import { serviceGroups, services, type ServiceGroup } from "@/lib/data";
 
-import { motion } from "framer-motion";
-import PageHero from "@/components/PageHero";
-import SectionHeader from "@/components/SectionHeader";
-import ServiceCard from "@/components/ServiceCard";
-import CTASection from "@/components/CTASection";
-import { services } from "@/lib/data";
-import { staggerContainer } from "@/lib/motion";
+export const metadata: Metadata = {
+  title: "Hizmetler: Web, Mobil, Turnike, POS, ERP ve Dijital Reklam",
+  description:
+    "Web sitesi, mobil uygulama, turnike ve kartlı geçiş, POS ve ERP, yönetim paneli, yapay zeka, sosyal medya yönetimi, Google ve Meta reklamları. Kadıköy merkezli, Türkiye geneli.",
+  alternates: { canonical: "/services" },
+};
 
 export default function ServicesPage() {
+  const groups = Object.keys(serviceGroups) as ServiceGroup[];
   return (
     <>
-      <PageHero
-        tag="Hizmetler"
-        title="İşinize özel teknoloji çözümleri"
-        description="Mobil uygulamadan yapay zekaya, dijital dönüşüm yolculuğunuzda yanınızdayız."
+      <PageHeader
+        title="İşletmenizin ihtiyacı olan her şey, tek ekipte."
+        text="Önce işinizi taşıyan sistemi kuruyoruz: yazılım, cihaz ve panel. Sonra o sisteme müşteri getiriyoruz: içerik ve reklam."
       />
 
-      <section className="section-padding bg-cream-100">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="grid gap-6 md:grid-cols-2"
-          >
-            {services.map((service, i) => (
-              <ServiceCard key={service.id} {...service} index={i} />
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <nav className="sticky top-16 z-30 border-b border-line bg-paper/95 backdrop-blur" aria-label="Hizmetler">
+        <ul className="shell flex gap-6 overflow-x-auto py-3 text-[0.92rem] font-semibold [scrollbar-width:none]">
+          {services.map((s) => (
+            <li key={s.id} className="shrink-0">
+              <a href={`#${s.id}`} className="text-ink-soft hover:text-cobalt">{s.title}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-      <section className="border-t border-stone-200 bg-white py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            tag="Süreç"
-            title="Nasıl çalışıyoruz?"
-            description="Şeffaf ve iteratif bir süreçle projelerinizi güvenle hayata geçiriyoruz."
-          />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              { step: "01", title: "Keşif", desc: "İhtiyaç analizi ve teknik yol haritası." },
-              { step: "02", title: "Tasarım", desc: "UI/UX prototip ve mimari planlama." },
-              { step: "03", title: "Geliştirme", desc: "Agile sprint'ler ile iteratif kodlama." },
-              { step: "04", title: "Teslimat", desc: "Yayın, eğitim ve sürekli destek." },
-            ].map((item, i) => (
-              <motion.div
-                key={item.step}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="rounded-2xl border border-stone-200 bg-cream-50 p-6"
-              >
-                <span className="font-display text-3xl font-bold text-stone-300">{item.step}</span>
-                <h3 className="mt-2 font-display text-lg font-semibold text-charcoal-900">{item.title}</h3>
-                <p className="mt-2 text-sm text-charcoal-600">{item.desc}</p>
-              </motion.div>
-            ))}
+      {groups.map((g) => (
+        <section key={g} className="border-b border-line py-16 md:py-24" aria-labelledby={`grup-${g}`}>
+          <div className="shell">
+            <h2 id={`grup-${g}`} className="text-[clamp(1.9rem,4vw,3.2rem)] font-extrabold leading-[1.02]">{serviceGroups[g].title}</h2>
+            <p className="mt-3 max-w-xl text-lg">{serviceGroups[g].summary}</p>
+
+            <div className="mt-12 divide-y divide-line border-y border-line">
+              {services
+                .filter((s) => s.group === g)
+                .map((s) => (
+                  <article key={s.id} id={s.id} className="grid scroll-mt-32 gap-8 py-12 md:grid-cols-[0.8fr_1.2fr] md:gap-14">
+                    <div>
+                      <h3 className="text-[clamp(1.5rem,2.6vw,2.1rem)] font-bold leading-tight">{s.title}</h3>
+                      <p className="mt-3 text-lg text-ink-muted">{s.short}</p>
+                      {s.project && (
+                        <Link
+                          href={s.project.href}
+                          className="mt-5 inline-block font-semibold text-ink underline decoration-cobalt decoration-2 underline-offset-4 hover:text-cobalt"
+                        >
+                          Örnek proje: {s.project.label}
+                        </Link>
+                      )}
+                    </div>
+                    <div className="grid gap-8 sm:grid-cols-2">
+                      <div>
+                        <h4 className="font-semibold text-alert">Sorun</h4>
+                        <p className="mt-2">{s.problem}</p>
+                        <h4 className="mt-6 font-semibold text-signal">Çözümümüz</h4>
+                        <p className="mt-2">{s.solution}</p>
+                      </div>
+                      <div className="rounded-lg bg-ink p-5 font-mono text-[0.85rem] text-paper/85">
+                        <p><span className="text-cobalt brightness-150">~ $ </span>{s.command}</p>
+                        <ul className="mt-3 space-y-1.5">
+                          {s.deliverables.map((d) => (
+                            <li key={d}><span className="text-signal brightness-125">✓ </span>{d}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
-      <CTASection />
+      <CTA />
     </>
   );
 }
